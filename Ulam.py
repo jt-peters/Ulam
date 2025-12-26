@@ -89,7 +89,7 @@ class Ulam():
         X = []
         Y = []
         for val in choices:
-            (x, y) = invUlam(val)
+            (x, y) = self.invUlam(val)
             if x_0 <= x and x <= x_0 + width and y_0 <= y and y <= y_0 + height:
                 X.append(x)
                 Y.append(y)
@@ -138,6 +138,9 @@ class Ulam():
 # Works by quadratic formula. 
 def quadratic_choice(a, b, c):
     return lambda N : b**2 - 4 * a * (c - N) > 0 and (float.is_integer((-1 * b + math.sqrt(b**2 - 4 * a * (c - N)))/(2 * a)) or float.is_integer((-1 * b - math.sqrt(b**2 - 4 * a * (c - N)))/(2 * a)))
+
+s = Ulam()
+s.see2([(3**14) * i for i in range(3000000)], -3000000, -3000000, 6000001, 6000001, size=0.001)
 
 # Tests Ulam and invUlam against each other
 def test():

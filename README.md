@@ -8,6 +8,7 @@ Contents:
 	1a. spiral.Ulam(x, y) returns the integer at the point (x, y). 
 	1b. spiral.invUlam(N) returns the coordinates of the point of value N if step_function were the identity. 
 	1c. spiral.see(choice_rule,x_0, y_0, width, height, size=s) creates a scatterplot of points (x, y) for which choice_rule(Ulam(x, y)) is True in the width X height region that has the bottom-left corner at (x_0, y_0). Size controls size of the point markers, if is not given, the default is 2. 
-	1d. spiral.poly_place(polyominoes, N, mode=string) Polyominoes is a list of lists of cartesian coordinates, each list represents a set of points. Creates an increasing list of values that are the sum of cells covered by a translation of  polyomino in the list polyominoes. mode is either "additive" or "multiplicative"."additive" is default, else the list is of values that are the product of covered sets. 
+	1d. spiral.see2(choices,x_0, y_0, width, height, size=s) creates a scatterplot of points (x, y) of the form invUlam(N) for N in choices in the width X height region that has the bottom-left corner at (x_0, y_0). Size controls size of the point markers, if is not given, the default is 2. This is a faster method than spiral.see. 
+	1e. spiral.poly_place(polyominoes, N, mode=string) Polyominoes is a list of lists of cartesian coordinates, each list represents a set of points. Creates an increasing list of values that are the sum of cells covered by a translation of  polyomino in the list polyominoes. mode is either "additive" or "multiplicative"."additive" is default, else the list is of values that are the product of covered sets. 
 
 2. quadratic_choice(a, b, c) Returns a choice function that returns true if N is of the form a*n^2+b*n+c for an integer n. 
