@@ -69,10 +69,9 @@ class Ulam():
 
     # Generates a plot of Ulam's spiral marking only those numbers N for which choice_rule(N) is true
     # in the region x_0 <= x < x+0 + width, y_0 <= y < y_0 + height
-    def see(self, choice_rule, x_0, y_0, width, height,size: Optional=2):
+    def see(self, choice_rule, x_0, y_0, width, height, size: Optional=2):
         X = []
         Y = []
-        prime_count = 0
         for x in range(x_0, x_0 + width):
             for y in range(y_0, y_0 + height):
                 if choice_rule(self.Ulam(x,y)):
@@ -83,7 +82,25 @@ class Ulam():
         plt.ylim(y_0, y_0 + height)
         plt.title("Ulam's Spiral: Segment " + str([x_0, x_0 + width - 1]) + "X" + str([y_0, y_0 + height - 1]))
         plt.show()
-        return prime_count
+        return
+    
+    # Generates a plot of the values given in the list choices in the same region as see(). 
+    def see2(self, choices, x_0, y_0, width, height, size: Optional=2):
+        X = []
+        Y = []
+        for val in choices:
+            (x, y) = invUlam(val)
+            if x_0 <= x and x <= x_0 + width and y_0 <= y and y <= y_0 + height:
+                X.append(x)
+                Y.append(y)
+                
+        plt.scatter(X, Y, s=size)
+        plt.xlim(x_0, x_0 + width)
+        plt.ylim(y_0, y_0 + height)
+        plt.title("Ulam's Spiral: Segment " + str([x_0, x_0 + width - 1]) + "X" + str([y_0, y_0 + height - 1]))
+        plt.show()
+        return
+            
 
     # Creates a list of all numbers that are the sum of numbers which can be covered by any one given polyomino,
     # one of them at most N
